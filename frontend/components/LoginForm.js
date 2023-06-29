@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import PT from 'prop-types'
+import axios from 'axios';
 
 const initialFormValues = {
   username: '',
   password: '',
 }
-export default function LoginForm(props) {
+export default function LoginForm (props) {
+  //console.log(props);
   const [values, setValues] = useState(initialFormValues)
   // ✨ where are my props? Destructure them here
 
@@ -15,7 +17,9 @@ export default function LoginForm(props) {
   }
 
   const onSubmit = evt => {
-    evt.preventDefault()
+    evt.preventDefault();
+    props.login(values)
+
     // ✨ implement
   }
 
@@ -43,10 +47,11 @@ export default function LoginForm(props) {
         placeholder="Enter password"
         id="password"
       />
-      <button disabled={isDisabled()} id="submitCredentials">Submit credentials</button>
+      <button onClick={onSubmit} disabled={isDisabled()} id="submitCredentials">Submit credentials</button>
     </form>
   )
 }
+
 
 // 🔥 No touchy: LoginForm expects the following props exactly:
 LoginForm.propTypes = {

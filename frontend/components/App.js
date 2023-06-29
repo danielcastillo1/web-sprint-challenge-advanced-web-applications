@@ -5,6 +5,7 @@ import LoginForm from './LoginForm'
 import Message from './Message'
 import ArticleForm from './ArticleForm'
 import Spinner from './Spinner'
+import axios from 'axios'
 
 const articlesUrl = 'http://localhost:9000/api/articles'
 const loginUrl = 'http://localhost:9000/api/login'
@@ -28,8 +29,16 @@ export default function App() {
     // In any case, we should redirect the browser back to the login screen,
     // using the helper above.
   }
-
-  const login = ({ username, password }) => {
+  console.log(loginUrl);
+  const login = (credentials) => {
+    setSpinnerOn(true);
+    setMessage("");
+    axios.post(loginUrl, credentials).then(res => {
+      localStorage.setItem('token', res.data.token)
+      setMessage(res.data.message);
+      navigate("/articles");
+      setSpinnerOn(false);
+    } ).catch(err => console.error(err))  
     // ✨ implement
     // We should flush the message state, turn on the spinner
     // and launch a request to the proper endpoint.
@@ -78,7 +87,7 @@ export default function App() {
           <NavLink id="articlesScreen" to="/articles">Articles</NavLink>
         </nav>
         <Routes>
-          <Route path="/" element={<LoginForm />} />
+          <Route path="/" element={<LoginForm login={login}/>} />
           <Route path="articles" element={
             <>
               <ArticleForm />
