@@ -8,6 +8,7 @@ export default function ArticleForm(props) {
   // ✨ where are my props? Destructure them here
 
   useEffect(() => {
+    
     // ✨ implement
     // Every time the `currentArticle` prop changes, we should check it for truthiness:
     // if it's truthy, we should set its title, text and topic into the corresponding
@@ -27,6 +28,7 @@ export default function ArticleForm(props) {
   }
 
   const isDisabled = () => {
+
     // ✨ implement
     // Make sure the inputs have some values
   }

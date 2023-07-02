@@ -9,8 +9,9 @@ export default function Articles(props) {
   // we should render a Navigate to login screen (React Router v.6)
 
   useEffect(() => {
+    
     // ✨ grab the articles here, on first render only
-  })
+  }, [])
 
   return (
     // ✨ fix the JSX: replace `Function.prototype` with actual functions
