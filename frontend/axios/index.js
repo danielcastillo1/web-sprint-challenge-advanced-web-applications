@@ -10,7 +10,7 @@ const axiosWithAuth = () => {
         },
     });
 };
-
+//console.log();
 const axiosGetArticles = () => {
     return axiosWithAuth()
         .get('/articles')
@@ -76,10 +76,3 @@ const axiosDeleteArticle = (id) => {
         });
 };
 
-export {
-    axiosPostLogin,
-    axiosGetArticles,
-    axiosPostArticle,
-    axiosUpdateArticle,
-    axiosDeleteArticle,
-};
