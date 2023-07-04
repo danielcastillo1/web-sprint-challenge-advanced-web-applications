@@ -18,7 +18,6 @@ export default function LoginForm(props) {
 
     const onSubmit = (evt) => {
         evt.preventDefault();
-        // console.log('LoginForm.js onSubmit');
         const credentials = {
             username: values.username.trim(),
             password: values.password.trim(),
